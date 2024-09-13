@@ -1,0 +1,9 @@
+0;Esempio;active;Calcio
+1;PippoPero;active;genova
+2;SandaLOE;archived;luigi
+3;ROOT spring tour;archived;ROOT
+4;zio;archived;pero
+5;candalo;active;calcio
+6;pappolo;active;nando
+7;ciao zio;archived;np
+8;Stoca;archived;sangria
