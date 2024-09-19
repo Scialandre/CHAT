@@ -6,4 +6,4 @@
 5;candalo;active;calcio
 6;pappolo;active;nando
 7;ciao zio;archived;np
-8;Stoca;archived;sangria
+8;polo;active;calo

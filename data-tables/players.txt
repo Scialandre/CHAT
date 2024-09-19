@@ -1,0 +1,1 @@
+id-torneo;id-squadra;maglia(id_giocatore);nome
