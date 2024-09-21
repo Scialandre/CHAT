@@ -4,6 +4,7 @@ import shutil
 
 from paths import *
 from mgmt import *
+from stats import *
 
 
 def update_pages():
@@ -36,7 +37,7 @@ def tour_page_UD(directory,id):
     """
     tour page update logic
     """
-
+    update_tour_stats()
     if not os.path.isdir(directory):
         shutil.copytree(tours_template_dir,directory)       #crea la directory in caso in cui non esista
 
@@ -47,6 +48,10 @@ def tour_page_UD(directory,id):
         if not line.strip().startswith('#'):
             indexfile.write(line)
         else:
+            if line.strip().startswith('#page-title'):
+                indexfile.write(f"<title>{tours_dict[id]['name']}</title>")
+            if line.strip().startswith('#ranking-header'):
+                indexfile.write(f"<h1>Classifica {tours_dict[id]['name']}</h1>")
             if line.strip().startswith('#rankings-table-body'):
                 indexfile.write(rank_table_body_gen(id))
 
@@ -67,6 +72,6 @@ def rank_table_body_gen(tour_id):      # TODO: spostare template e modificarlo c
     #TODO:ordinare in base alla classifica
 
     for id in teams:
-        result+= f' <tr onclick=\"goToTeamPage(\'../../squadre/{tour_id}-{teams[id]['team_id']}\')\"><td>{rank}</td><td>{teams[id]['name']}</td><td>WIP</td><td>WIP</td><td>WIP</td><td>WIP</td><td>WIP</td></tr>'
+        result+= f' <tr onclick=\"goToTeamPage(\'../../squadre/{tour_id}-{teams[id]['team_id']}\')\"><td>{rank}</td><td>{teams[id]['name']}</td><td>{int(teams[id]['win'])+int(teams[id]['draw'])+int(teams[id]['lose'])}</td><td>{teams[id]['win']}</td><td>{teams[id]['draw']}</td><td>{teams[id]['lose']}</td><td>{teams[id]['points-out']}</td><td>{teams[id]['points-in']}</td><td>{teams[id]['rank-score']}</td></tr>'
         rank +=1
     return result

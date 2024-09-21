@@ -69,6 +69,9 @@ def mgmt_console_loop(input_msg,level):
         
         while command not in termination_commands:
             #if command == 'modify':
+            if command == 'list':
+                for key in teams_dict:
+                    print(f'{key}:{teams_dict[key]}')
 
             if command == 'add':
                 add_team(active_tour_id)

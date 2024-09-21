@@ -24,7 +24,7 @@ def data_in():
     file = open(teamsfile,'r')
     for line in file:
         splatline = line.strip().split(';')
-        teams_dict[f'{splatline[1]}']={'name':splatline[2],'sport':splatline[3],'tour_id':splatline[0],'team_id':splatline[1],'rank-score':splatline[4],'win':splatline[5],'draw':splatline[6],'lose':splatline[7],'points-in':splatline[8],'points-out':splatline[9]}
+        teams_dict[f'{splatline[0]}']={'name':splatline[2],'sport':splatline[3],'tour_id':splatline[1],'team_id':splatline[0],'rank-score':splatline[4],'win':splatline[5],'draw':splatline[6],'lose':splatline[7],'points-out':splatline[8],'points-in':splatline[9]}
     file.close()
     file = open(stafffile,'r')
     for line in file:
@@ -62,9 +62,9 @@ def data_out():
             file.write('\n')
         else:
             first = not first
-        file.write(f'{teams_dict[ids]['tour_id']};{ids};{teams_dict[ids]['name']};{teams_dict[ids]['sport']}')
+        file.write(f'{ids};{teams_dict[ids]['tour_id']};{teams_dict[ids]['name']};{teams_dict[ids]['sport']}')
         file.write(f';{teams_dict[ids]['rank-score']};{teams_dict[ids]['win']};{teams_dict[ids]['draw']};{teams_dict[ids]['lose']}')
-        file.write(f';{teams_dict[ids]['points-in']};{teams_dict[ids]['points-out']}')
+        file.write(f';{teams_dict[ids]['points-out']};{teams_dict[ids]['points-in']}')
     file.close()
     file = open(stafffile,'w')
     first = True
@@ -179,7 +179,7 @@ def add_team(tour_id):      #TODO: aggiungere dir team
     insertable['team_id'] = str(team_id)
     insertable['sport']=sport
     insertable['rank-score']=insertable['win']=insertable['draw']=insertable['lose']=insertable['points-in']=insertable['points-out']='0'
-    teams_dict[team_id] = insertable
+    teams_dict[str(team_id)] = insertable
     data_out()
 
 def remove_team():
