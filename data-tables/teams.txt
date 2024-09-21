@@ -1,11 +1,5 @@
 id-tour;id-team;nome;sport;punti-classifica;Win;Draw;Lose;punteggio-segnato;punteggio-subito
-0;1;ciao;wip;0;0;0;0;0;0
-0;2;ciao;wip;0;0;0;0;0;0
-1;3;prova;wip;0;0;0;0;0;0
-1;0;ca;sei prop;0;0;0;0;0;0
-1;1;pippoperoshow;sei prop;0;0;0;0;0;0
-0;0;sansalvario;Calcio;0;0;0;0;0;0
-0;3;cavvp;Calcio;0;0;0;0;0;0
-0;4;pisnelo;Calcio;0;0;0;0;0;0
-11;0;casseruola;ao;0;0;0;0;0;0
-11;1;sangria;ao;0;0;0;0;0;0
+0;0;san cassiano;Calcio;0;0;0;0;0;0
+0;1;caprarica;Calcio;0;0;0;0;0;0
+0;2;Migliano;Calcio;0;0;0;0;0;0
+0;3;waterdeep;Calcio;0;0;0;0;0;0

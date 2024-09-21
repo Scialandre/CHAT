@@ -9,6 +9,7 @@ tours_dict = dict()
 teams_dict = dict()
 players_dict = dict()
 staff_dict = dict()
+games_dict = dict()
 
 
 def data_in():
@@ -23,7 +24,7 @@ def data_in():
     file = open(teamsfile,'r')
     for line in file:
         splatline = line.strip().split(';')
-        teams_dict[f'{splatline[0]};{splatline[1]}']={'name':splatline[2],'sport':splatline[3],'tour_id':splatline[0],'team_id':splatline[1],'rank-score':splatline[4],'win':splatline[5],'draw':splatline[6],'lose':splatline[7],'points-in':splatline[8],'points-out':splatline[9]}
+        teams_dict[f'{splatline[1]}']={'name':splatline[2],'sport':splatline[3],'tour_id':splatline[0],'team_id':splatline[1],'rank-score':splatline[4],'win':splatline[5],'draw':splatline[6],'lose':splatline[7],'points-in':splatline[8],'points-out':splatline[9]}
     file.close()
     file = open(stafffile,'r')
     for line in file:
@@ -34,6 +35,11 @@ def data_in():
     for line in file:
         splatline = line.strip().split(';')
         players_dict[f'{splatline[0]};{splatline[1]};{splatline[2]}']=splatline[3]
+    file.close()
+    file = open(gamesfile,'r')
+    for line in file:
+        splatline = line.strip().split(';')
+        games_dict[f'{splatline[0]}']={'game_id':splatline[0],'tour_id':splatline[1],'team1_id':splatline[2],'team2_id':splatline[3],'type':splatline[4],'team1_score':splatline[5],'team2_score':splatline[6]}
     file.close()
 
 def data_out():
@@ -56,7 +62,7 @@ def data_out():
             file.write('\n')
         else:
             first = not first
-        file.write(f'{ids};{teams_dict[ids]['name']};{teams_dict[ids]['sport']}')
+        file.write(f'{teams_dict[ids]['tour_id']};{ids};{teams_dict[ids]['name']};{teams_dict[ids]['sport']}')
         file.write(f';{teams_dict[ids]['rank-score']};{teams_dict[ids]['win']};{teams_dict[ids]['draw']};{teams_dict[ids]['lose']}')
         file.write(f';{teams_dict[ids]['points-in']};{teams_dict[ids]['points-out']}')
     file.close()
@@ -78,10 +84,19 @@ def data_out():
             first = not first
         file.write(f'{ids};{players_dict[ids]}')
     file.close()
+    file = open(gamesfile,'w')
+    first = True
+    for id in games_dict:
+        if not first:
+            file.write('\n')
+        else:
+            first = not first
+        file.write(f'{id};{games_dict[id]['tour_id']};{games_dict[id]['team1_id']};{games_dict[id]['team2_id']};{games_dict[id]['type']};{games_dict[id]['team1_score']};{games_dict[id]['team2_score']}')
+    file.close()
     
 #######
 
-def add_tour():
+def add_tour():         #TODO: aggiungere dir tour
     """
     aggiunge un torneo al db
     """
@@ -148,17 +163,15 @@ def get_tour(id):
 
 ############
 
-def add_team(tour_id):
+def add_team(tour_id):      #TODO: aggiungere dir team
     data_in()
 
     name = input(team_name_question)       
     sport = get_tour(tour_id)['sport']    
 
     team_id = 0
-    teams = get_teams_by_tour(str(tour_id))
-    while str(team_id) in teams:
-        team_id+=1 
-    id = str(tour_id) + ';' + str(team_id)      #FIXME: <- agigungere logica calcolo id
+    while str(team_id) in teams_dict:
+        team_id+=1       #FIXME: <- agigungere logica calcolo id
     
     insertable = dict()
     insertable['name']=name
@@ -166,7 +179,7 @@ def add_team(tour_id):
     insertable['team_id'] = str(team_id)
     insertable['sport']=sport
     insertable['rank-score']=insertable['win']=insertable['draw']=insertable['lose']=insertable['points-in']=insertable['points-out']='0'
-    teams_dict[id] = insertable
+    teams_dict[team_id] = insertable
     data_out()
 
 def remove_team():
@@ -180,6 +193,6 @@ def get_teams_by_tour(tour_id):
 
     for id in teams_dict:
         if str(teams_dict[id]['tour_id']) == str(tour_id):
-            result[id.split(';')[1]] = teams_dict[id]
+            result[id] = teams_dict[id]
     
     return result
