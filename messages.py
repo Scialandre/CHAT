@@ -8,9 +8,10 @@ active_tour_message = '\nTornei Attivi: \n[Id]-nome-sport\n'
 
 #mgmt
 
-name_question = "Nome del torneo: "
+tour_name_question = "Nome del torneo: "
 status_question = "Status del torneo: "
 sport_question = "Sport del torneo: "
+team_name_question = "Nome della squadra: "
 id_question = "Id del torneo: "
 mgmt_console_loop_msg = "CHAT>mgmt>"
 wrong_tour_id='no tour matching id'

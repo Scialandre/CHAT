@@ -1,0 +1,4 @@
+id-tour;id-team;nome;sport
+0;1;ciao;wip
+0;2;ciao;wip
+1;3;prova;wip

@@ -1,4 +1,6 @@
 # funzioni per aggiornare gli html
+import os
+import shutil
 
 from paths import *
 from mgmt import *
@@ -6,11 +8,13 @@ from mgmt import *
 
 def update_pages():
     print('wip')
-    DEEZ_NUTS(CHATdir)
+    main_page_UD(CHATdir)
+    for id in tours_dict:
+        tour_page_UD(f'{tours_dir}\\{id}',id)
 
-def DEEZ_NUTS(directory):
+def main_page_UD(directory):       #TODO: separare la logica per tipo di pagina <- coservando questa per la  main page
     """
-    single page update logic
+    main page update logic
     """
     indexfile = open(directory+'\\index.html','w')
     templatefile = open(directory+'\\template.html','r')
@@ -28,7 +32,41 @@ def DEEZ_NUTS(directory):
     indexfile.close()
     templatefile.close()
 
+def tour_page_UD(directory,id):
+    """
+    tour page update logic
+    """
+
+    if not os.path.isdir(directory):
+        shutil.copytree(tours_template_dir,directory)       #crea la directory in caso in cui non esista
+
+    indexfile = open(directory+'\\index.html','w')
+    templatefile = open(tours_template_file,'r')
+
+    for line in templatefile:
+        if not line.strip().startswith('#'):
+            indexfile.write(line)
+        else:
+            if line.strip().startswith('#rankings-table-body'):
+                indexfile.write(rank_table_body_gen(id))
+
+            
+    indexfile.close()
+    templatefile.close()
+
 def tours_print(indexfile,type):
     tours = list_tours(type)
-    for line in tours:
-        indexfile.write(f'<a href=".\\tornei\\{line.split(";")[0]}"><li>{line.split(';')[1]}</li></a>\n')
+    for id in tours:
+        indexfile.write(f'<a href=".\\tornei\\{id}"><li>{tours[id]['name']}</li></a>\n')
+
+def rank_table_body_gen(tour_id):      # TODO: spostare template e modificarlo con replace
+    result = ''
+    teams = get_teams_by_tour(str(tour_id))
+    rank =1
+    
+    #TODO:ordinare in base alla classifica
+
+    for id in teams:
+        result+= f' <tr onclick=\"goToTeamPage(\'../../squadre/{tour_id}-{teams[id]['team_id']}\')\"><td>{rank}</td><td>{teams[id]['name']}</td><td>WIP</td><td>WIP</td><td>WIP</td><td>WIP</td><td>WIP</td></tr>'
+        rank +=1
+    return result

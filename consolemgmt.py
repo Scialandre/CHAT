@@ -38,7 +38,7 @@ def console_loop():
             list_tours('active')
         if command == 'close':
             id = input(id_question)
-            set_tour(id,'keep','archived','keep')
+            set_tour(id.strip(),'keep','archived','keep')
         if command == 'archive':
             list_tours('archived')
         if command == 'mgmt':
@@ -60,16 +60,18 @@ def mgmt_console_loop(input_msg,level):
         id = input(input_msg+' '+id_question)
         if tour_exists(int(id)):
             active_tour_id = int(id)
-            mgmt_console_loop(input_msg+f"{id}-{tour_dict[id]['name']}>",'tour')
+            mgmt_console_loop(input_msg+f"{id}-{tours_dict[id]['name']}>",'tour')
         else:
             print(wrong_tour_id)
-            return
+
 
     if level == 'tour':
         
         while command not in termination_commands:
             #if command == 'modify':
 
+            if command == 'add':
+                add_team(active_tour_id)
 
             if command == 'back':
                 return

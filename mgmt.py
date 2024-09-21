@@ -5,7 +5,7 @@ from paths import *
 
 # gestione tornei
 
-tour_dict = dict()
+tours_dict = dict()
 teams_dict = dict()
 players_dict = dict()
 staff_dict = dict()
@@ -17,22 +17,22 @@ def data_in():
     """
     file = open(toursfile,'r')
     for line in file:
-        splatline = line.split(';')
-        tour_dict[splatline[0]]={'name':splatline[1],'status':splatline[2],'sport':splatline[3]}
+        splatline = line.strip().split(';')
+        tours_dict[splatline[0]]={'name':splatline[1],'status':splatline[2],'sport':splatline[3]}
     file.close()
     file = open(teamsfile,'r')
     for line in file:
-        splatline = line.split(';')
-        teams_dict[f'{splatline[0]};{splatline[1]}']={'name':splatline[2],'sport':splatline[3]}
+        splatline = line.strip().split(';')
+        teams_dict[f'{splatline[0]};{splatline[1]}']={'name':splatline[2],'sport':splatline[3],'tour_id':splatline[0],'team_id':splatline[1]}
     file.close()
     file = open(stafffile,'r')
     for line in file:
-        splatline = line.split(';')
-        staff_dict[f'{splatline[0]};{splatline[1]};{splatline[2]}']=splatline[3]
+        splatline = line.strip().split(';')
+        staff_dict[f'{splatline[0]};{splatline[1]};{splatline[2]}']=splatline[3]        #aggiungere gli altri dati??
     file.close()
     file = open(playersfile,'r')
     for line in file:
-        splatline = line.split(';')
+        splatline = line.strip().split(';')
         players_dict[f'{splatline[0]};{splatline[1]};{splatline[2]}']=splatline[3]
     file.close()
 
@@ -41,35 +41,59 @@ def data_out():
     scrive dati sui file
     """
     file = open(toursfile,'w')
-    for id in tour_dict:
-        file.write(f'{id};{tour_dict[id]['name']};{tour_dict[id]['status']};{tour_dict[id]['sport']}')
+    first = True
+    for id in tours_dict:
+        if not first:
+            file.write('\n')
+        else:
+            first = not first
+        file.write(f'{id};{tours_dict[id]['name']};{tours_dict[id]['status']};{tours_dict[id]['sport']}')
     file.close()
     file = open(teamsfile,'w')
+    first = True
     for ids in teams_dict:
+        if not first:
+            file.write('\n')
+        else:
+            first = not first
         file.write(f'{ids};{teams_dict[ids]['name']};{teams_dict[ids]['sport']}')
     file.close()
     file = open(stafffile,'w')
+    first = True
     for ids in staff_dict:
+        if not first:
+            file.write('\n')
+        else:
+            first = not first
         file.write(f'{ids};{staff_dict[ids]}')
     file.close()
     file = open(playersfile,'w')
+    first = True
     for ids in players_dict:
+        if not first:
+            file.write('\n')
+        else:
+            first = not first
         file.write(f'{ids};{players_dict[ids]}')
     file.close()
     
-
+#######
 
 def add_tour():
     """
     aggiunge un torneo al db
     """
     data_in()
-    name = input(name_question)       
-    sport = input(sport_question)     
-    id = len(tour_dict)
-    tour_dict[id]['name']=name
-    tour_dict[id]['status']='active'
-    tour_dict[id]['sport']=sport    #FIXME: gestione ';'  <- dovrebbe essere risolto<-???
+    name = input(tour_name_question)       
+    sport = input(sport_question)
+    id = 0
+    while str(id) in tours_dict:
+        id+=1     
+    insertable = dict()
+    insertable['name']=name
+    insertable['status']='active'
+    insertable['sport']=sport
+    tours_dict[str(id)] = insertable     #FIXME: gestione ';'  <- dovrebbe essere risolto<-???
     data_out()
 
 def list_tours(status):     #TODO: aggiungere filtraggio su sport
@@ -79,10 +103,10 @@ def list_tours(status):     #TODO: aggiungere filtraggio su sport
     data_in()
     print(active_tour_message) #TODO: generalizzare
     returnable = dict()
-    for id in tour_dict:
-        if tour_dict[id]['status'] == status:
-            returnable[id]=tour_dict[id]
-            print(f'[{id}]-{tour_dict[id]['name']}-{tour_dict[id]['status']}-{tour_dict[id]['sport']}'.strip())
+    for id in tours_dict:
+        if tours_dict[id]['status'] == status:
+            returnable[id]=tours_dict[id]
+            print(f'[{id}]-{tours_dict[id]['name']}-{tours_dict[id]['status']}-{tours_dict[id]['sport']}'.strip())
     return returnable
 
 def set_tour(id,nome,status,sport):
@@ -90,9 +114,10 @@ def set_tour(id,nome,status,sport):
     modifica tornei esistenti
     se nome, status o sport sono 'keep' non vengono modificati
     """
-    previous_name = tour_dict[id]['name']
-    previous_status = tour_dict[id]['status']
-    previous_sport = tour_dict[id]['sport']
+    data_in()
+    previous_name = tours_dict[id]['name']
+    previous_status = tours_dict[id]['status']
+    previous_sport = tours_dict[id]['sport']
     
     if nome =='keep':
         nome = previous_name
@@ -100,15 +125,45 @@ def set_tour(id,nome,status,sport):
         status = previous_status
     if sport =='keep':
         sport = previous_sport
-    tour_dict[id]={'name':nome,'status':status,'sport':sport}  #FIXME: gestione ';' <- dovrebbbe essere risolto<-non so più quanto sia valido
-
+    tours_dict[id]={'name':nome,'status':status,'sport':sport}  #FIXME: gestione ';' <- dovrebbbe essere risolto<-non so più quanto sia valido
+    data_out()
     
 def tour_exists(id):
-    return (str(id) in tour_dict)
+    return (str(id) in tours_dict)
     
+def remove_tour(id):
+    data_in()
+    if id in tours_dict:
+        conferma = input(f'Removing tournament [{id}]-{tours_dict[id]['name']} - {tours_dict[id]['status']} - {tours_dict[id]['sport']} \n Are you sure? Y/N')        #FIXME:TODO: mark
+        if conferma.lower().strip() == 'y':
+            tours_dict.pop(id)
+    else:
+        print(wrong_tour_id)
+    data_out()
 
-def add_team():
-    return
+def get_tour(id):
+    return tours_dict[str(id)]
+
+############
+
+def add_team(tour_id):
+    data_in()
+
+    name = input(team_name_question)       
+    sport = get_tour(tour_id)['sport']    
+
+    team_id = 0
+    teams = get_teams_by_tour(str(tour_id))
+    while str(team_id) in teams:
+        team_id+=1 
+    id = str(tour_id) + ';' + str(team_id)      #FIXME: <- agigungere logica calcolo id
+    
+    insertable = dict()
+    insertable['name']=name
+    #insertable['id'] = 
+    insertable['sport']=sport
+    teams_dict[id] = insertable
+    data_out()
 
 def remove_team():
     return
@@ -116,3 +171,11 @@ def remove_team():
 def manage_team():
     return
 
+def get_teams_by_tour(tour_id):
+    result = dict()
+
+    for id in teams_dict:
+        if str(teams_dict[id]['tour_id']) == str(tour_id):
+            result[id.split(';')[1]] = teams_dict[id]
+    
+    return result
