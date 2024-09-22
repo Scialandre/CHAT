@@ -72,6 +72,9 @@ def mgmt_console_loop(input_msg,level):
             if command == 'list':
                 for key in teams_dict:
                     print(f'{key}:{teams_dict[key]}')
+                for key in games_dict:
+                    game = games_dict[key]
+                    print(f'{key}:{game}')
 
             if command == 'add':
                 add_team(active_tour_id)

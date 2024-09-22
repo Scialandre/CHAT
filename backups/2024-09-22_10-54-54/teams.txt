@@ -1,6 +1,6 @@
-id-team;id-tour;nome;sport;0;0;0;0;0;0
-0;0;san cassiano;Calcio;4;1;1;1;9;7
-1;0;caprarica;Calcio;4;1;1;1;7;9
+id-team;id-tour;nome;sport;0;0;0;0;punteggio-segnato;punteggio-subito
+0;0;san cassiano;Calcio;0;0;0;0;0;0
+1;0;caprarica;Calcio;0;0;0;0;0;0
 2;0;Migliano;Calcio;0;0;0;0;0;0
 3;0;waterdeep;Calcio;0;0;0;0;0;0
 4;1;padrepio;sei prop;0;0;0;0;0;0

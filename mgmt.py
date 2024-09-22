@@ -24,7 +24,7 @@ def data_in():
     file = open(teamsfile,'r')
     for line in file:
         splatline = line.strip().split(';')
-        teams_dict[f'{splatline[0]}']={'name':splatline[2],'sport':splatline[3],'tour_id':splatline[1],'team_id':splatline[0],'rank-score':splatline[4],'win':splatline[5],'draw':splatline[6],'lose':splatline[7],'points-out':splatline[8],'points-in':splatline[9]}
+        teams_dict[f'{splatline[0]}']={'name':splatline[2],'sport':splatline[3],'tour_id':splatline[1],'team_id':splatline[0],'rank_score':splatline[4],'win':splatline[5],'draw':splatline[6],'lose':splatline[7],'points_out':splatline[8],'points_in':splatline[9]}
     file.close()
     file = open(stafffile,'r')
     for line in file:
@@ -63,8 +63,8 @@ def data_out():
         else:
             first = not first
         file.write(f'{ids};{teams_dict[ids]['tour_id']};{teams_dict[ids]['name']};{teams_dict[ids]['sport']}')
-        file.write(f';{teams_dict[ids]['rank-score']};{teams_dict[ids]['win']};{teams_dict[ids]['draw']};{teams_dict[ids]['lose']}')
-        file.write(f';{teams_dict[ids]['points-out']};{teams_dict[ids]['points-in']}')
+        file.write(f';{teams_dict[ids]['rank_score']};{teams_dict[ids]['win']};{teams_dict[ids]['draw']};{teams_dict[ids]['lose']}')
+        file.write(f';{teams_dict[ids]['points_out']};{teams_dict[ids]['points_in']}')
     file.close()
     file = open(stafffile,'w')
     first = True

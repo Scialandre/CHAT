@@ -10,6 +10,7 @@ from stats import *
 def update_pages():
     print('wip')
     main_page_UD(CHATdir)
+    update_tour_stats()
     for id in tours_dict:
         tour_page_UD(f'{tours_dir}\\{id}',id)
 
@@ -37,7 +38,6 @@ def tour_page_UD(directory,id):
     """
     tour page update logic
     """
-    update_tour_stats()
     if not os.path.isdir(directory):
         shutil.copytree(tours_template_dir,directory)       #crea la directory in caso in cui non esista
 
@@ -72,6 +72,6 @@ def rank_table_body_gen(tour_id):      # TODO: spostare template e modificarlo c
     #TODO:ordinare in base alla classifica
 
     for id in teams:
-        result+= f' <tr onclick=\"goToTeamPage(\'../../squadre/{tour_id}-{teams[id]['team_id']}\')\"><td>{rank}</td><td>{teams[id]['name']}</td><td>{int(teams[id]['win'])+int(teams[id]['draw'])+int(teams[id]['lose'])}</td><td>{teams[id]['win']}</td><td>{teams[id]['draw']}</td><td>{teams[id]['lose']}</td><td>{teams[id]['points-out']}</td><td>{teams[id]['points-in']}</td><td>{teams[id]['rank-score']}</td></tr>'
+        result+= f' <tr onclick=\"goToTeamPage(\'../../squadre/{tour_id}-{teams[id]['team_id']}\')\"><td>{rank}</td><td>{teams[id]['name']}</td><td>{int(teams[id]['win'])+int(teams[id]['draw'])+int(teams[id]['lose'])}</td><td>{teams[id]['win']}</td><td>{teams[id]['draw']}</td><td>{teams[id]['lose']}</td><td>{teams[id]['points_out']}</td><td>{teams[id]['points_in']}</td><td>{teams[id]['rank_score']}</td></tr>'
         rank +=1
     return result
