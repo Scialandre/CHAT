@@ -9,7 +9,7 @@ from backupFun import *
 
 
 termination_commands = {'end','stop'}
-legal_commands = {'start','update','help','add','list','archive','close','mgmt','backup'}
+legal_commands = {'start','update','help','add','list','archive','open','close','mgmt','backup','hide'}
 
 active_tour_id = -1
 
@@ -39,6 +39,12 @@ def console_loop():
         if command == 'close':
             id = input(id_question)
             set_tour(id.strip(),'keep','archived','keep')
+        if command == 'open':
+            id = input(id_question)
+            set_tour(id.strip(),'keep','active','keep')
+        if command == 'hide':
+            id = input(id_question)
+            set_tour(id.strip(),'keep','hidden','keep')
         if command == 'archive':
             list_tours('archived')
         if command == 'mgmt':

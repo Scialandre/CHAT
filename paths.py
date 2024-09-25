@@ -20,3 +20,4 @@ playersfile = db_dir + "\\players.txt"
 gamesfile = db_dir + "\\games.txt"
 
 tours_template_file = tours_template_dir + "\\index.html"   # <- si chiama index per conservare il nome quando viene copiato
+teams_template_file = teams_template_dir + "\\index.html"   # <- si chiama index per conservare il nome quando viene copiato
