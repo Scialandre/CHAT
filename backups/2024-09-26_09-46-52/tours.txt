@@ -1,0 +1,12 @@
+0;Esempio;active;Calcio
+1;caso amico;active;sei prop
+2;SandaLOE;archived;luigi
+3;ROOT spring tour;archived;ROOT
+4;zio;archived;pero
+5;candalo;archived;calcio
+6;pappolo;active;nando
+7;ciao zio;active;np
+8;polo;active;calo99
+9;ciao;archived;riproviamo
+10;sembra;archived;funzionare
+11;prova live;active;ao

@@ -1,0 +1,3 @@
+id-torneo;id-squadra;maglia(id_giocatore);nome
+0;0;10;Axel Blaze
+0;0;1;Mark Evans

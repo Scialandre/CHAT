@@ -1,0 +1,18 @@
+id-team;id-tour;nome;sport;0;0;0;0;0;0
+0;0;san cassiano;Calcio;4;1;1;2;10;9
+1;0;caprarica;Calcio;7;2;1;1;9;10
+2;0;Migliano;Calcio;0;0;0;0;0;0
+3;0;waterdeep;Calcio;0;0;0;0;0;0
+4;1;padrepio;sei prop;0;0;0;0;0;0
+5;11;santender;ao;0;0;0;0;0;0
+6;11;caligola;ao;0;0;0;0;0;0
+7;1;piopero;sei prop;0;0;0;0;0;0
+8;1;sandaloe;sei prop;0;0;0;0;0;0
+9;1;ciao;sei prop;0;0;0;0;0;0
+10;8;san;calo99;0;0;0;0;0;0
+11;8;ciao;calo99;0;0;0;0;0;0
+12;0;popopo;Calcio;0;0;0;0;0;0
+13;0;cacaccaca;Calcio;0;0;0;0;0;0
+14;11;franceso;ao;0;0;0;0;0;0
+15;11;vircolino;ao;0;0;0;0;0;0
+16;8;pinotto;calo99;0;0;0;0;0;0

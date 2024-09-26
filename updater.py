@@ -3,6 +3,9 @@ import os
 import shutil
 
 from paths import *
+from htmlLineTemplates import *
+from messages import *
+
 from mgmt import *
 from stats import *
 
@@ -16,7 +19,7 @@ def update_pages():
     for id in teams_dict:
         team_page_UD(f'{teams_dir}\\{id}',id)
 
-def main_page_UD(directory):       #TODO: separare la logica per tipo di pagina <- coservando questa per la  main page
+def main_page_UD(directory):
     """
     main page update logic
     """
@@ -51,9 +54,9 @@ def tour_page_UD(directory,id):
             indexfile.write(line)
         else:
             if line.strip().startswith('#page-title'):
-                indexfile.write(f"<title>{tours_dict[id]['name']}</title>")
+                indexfile.write(page_title.replace('#TITOLO#',tours_dict[id]['name']))
             if line.strip().startswith('#ranking-header'):
-                indexfile.write(f"<h1>Classifica {tours_dict[id]['name']}</h1>")
+                indexfile.write(ranking_header.replace('#NOME-TORNEO#',tours_dict[id]['name']))
             if line.strip().startswith('#rankings-table-body'):
                 indexfile.write(rank_table_body_gen(id))
 
@@ -76,16 +79,22 @@ def team_page_UD(directory,id):
             indexfile.write(line)
         else:
             if line.strip().startswith('#page-title'):
-                indexfile.write(f"<title>{teams_dict[id]['name']}</title>")
+                indexfile.write(page_title.replace('#TITOLO#',teams_dict[id]['name']))
             if line.strip().startswith('#back-button'):
-                indexfile.write(f'<a href="../../tornei/{teams_dict[id]['tour_id']}">temp back button</a>')
+                try:
+                    indexfile.write(team_page_back_button.replace('#TOUR-ID',teams_dict[id]['tour_id']).replace('#TOUR-NAME#',tours_dict[teams_dict[id]['tour_id']]['name']))
+                except KeyError as ke:
+                    pass
             if line.strip().startswith('#name-header'):
                 indexfile.write(f'<h1>{teams_dict[id]['name']}</h1>')
+            if line.strip().startswith('#team-logo'):
+                indexfile.write(team_image_or_logo.replace('#FOLDER#','team-logo').replace('#TEAM-ID#',id))
             if line.strip().startswith('#staff-list'):
                 indexfile.write(staff_list_gen(id))
             if line.strip().startswith('#players-list'):
                 indexfile.write(players_list_gen(id))
-
+            if line.strip().startswith('#team-image'):
+                indexfile.write(team_image_or_logo.replace('#FOLDER#','team-image').replace('#TEAM-ID#',id))
             
     indexfile.close()
     templatefile.close()
@@ -93,9 +102,9 @@ def team_page_UD(directory,id):
 def tours_print(indexfile,type):
     tours = list_tours(type)
     for id in tours:
-        indexfile.write(f'<a href=".\\tornei\\{id}"><li>{tours[id]['name']}</li></a>\n')
+        indexfile.write(tour_list_entry.replace('#TOUR-ID#',id).replace('#NOME#',tours[id]['name']))
 
-def rank_table_body_gen(tour_id):      # TODO: spostare template e modificarlo con replace
+def rank_table_body_gen(tour_id):
     result = ''
     teams =dict(sorted(get_teams_by_tour(str(tour_id)).items(), key=lambda x: (x[1]['rank_score'], x[1]['points_out']), reverse=True)) 
     rank =1
@@ -103,7 +112,7 @@ def rank_table_body_gen(tour_id):      # TODO: spostare template e modificarlo c
 
 
     for id in teams:
-        result+= f' <tr onclick=\"goToTeamPage(\'../../squadre/{teams[id]['team_id']}\')\"><td>{rank}</td><td>{teams[id]['name']}</td><td>{int(teams[id]['win'])+int(teams[id]['draw'])+int(teams[id]['lose'])}</td><td>{teams[id]['win']}</td><td>{teams[id]['draw']}</td><td>{teams[id]['lose']}</td><td>{teams[id]['points_out']}</td><td>{teams[id]['points_in']}</td><td>{teams[id]['rank_score']}</td></tr>'
+        result+= team_table_entry.replace('#TEAM-ID#',teams[id]['team_id']).replace('#RANK#',str(rank)).replace('#NOME#',teams[id]['name']).replace('#GAMES-PLAYED#',str(int(teams[id]['win'])+int(teams[id]['draw'])+int(teams[id]['lose']))).replace('#GAMES-WON#',teams[id]['win']).replace('#GAMES-DRAW#',teams[id]['draw']).replace('#GAMES-LOST#',teams[id]['lose']).replace('#PUNTI-SEGNATI#',teams[id]['points_out']).replace('#PUNTI-SUBITI#',teams[id]['points_in']).replace('#RANK-SCORE#',teams[id]['rank_score'])
         rank +=1
     return result
 
@@ -112,7 +121,7 @@ def staff_list_gen(team_id):
     for ids in staff_dict:      #TODO: restructure staff e player
         splat = ids.split(';')
         if splat[1] == str(team_id):
-            result += f'<li>{staff_dict[ids]}</li>\n'
+            result += staff_list_entry.replace('#NOME#',staff_dict[ids])
 
 
     return result.strip('\n')
@@ -122,7 +131,6 @@ def players_list_gen(team_id):
     for ids in players_dict:      #TODO: restructure staff e player
         splat = ids.split(';')
         if splat[1] == str(team_id):
-            result += f'<li>{splat[2]}\t{players_dict[ids]}</li>\n'
-
+            result += player_list_entry.replace('#MAGLIA#',splat[2]).replace('#NOME#',players_dict[ids])
 
     return result.strip('\n')
