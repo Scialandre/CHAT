@@ -1,0 +1,14 @@
+####### esempio -> elimina file staff e players
+ID:
+NAME:
+TOUR_ID:
+SPORT:
+PLAYERS: 10-P, Giocatore10, 11-A, Giocatore11
+STAFF: 0-Allenatore, nome, 1-Staff Medico, calò
+RANK_SCORE:
+WIN:
+DRAW:
+LOSE:
+SCORE_OUT:
+SCORE_IN:
+#######

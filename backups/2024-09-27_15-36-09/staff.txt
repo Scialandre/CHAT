@@ -1,0 +1,4 @@
+id_torneo;id_squadra;id_staff;nome
+0;0;0;calogero
+0;0;1;franco
+0;1;0;antonio

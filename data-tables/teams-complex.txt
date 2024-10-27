@@ -1,9 +1,0 @@
-####### esempio -> elimina file staff e players
-ID:
-Nome:
-Torneo:
-Sport:
-Giocatori: 10-P, Giocatore10, 11-A, Giocatore11
-Staff: Allenatore, nome, Staff Medico, calò
-Stats: Points, 12, Win, 3, Draw, 3, Lose, 1, score-out, 17, score-in, 14
-#######

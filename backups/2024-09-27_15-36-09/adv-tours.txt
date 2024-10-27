@@ -1,0 +1,8 @@
+####### esempio -> elimina file games
+ID:
+NAME:
+STATUS:
+SPORT:
+?TEAMS: id1, team1, id2, team2 
+GAMES: id1, idteam1-idteam2/scoreTeam1-scoreTeam2, id2, idteam1-idteam2/scoreTeam1-scoreTeam2,
+#######

@@ -2,7 +2,7 @@
 
 from messages import *
 
-CHATdir = ".\\CHAT"
+CHATdir = "C:\\Users\\Giovanni\\CHAT"#".\\CHAT"#<-FIXME:
 
 db_dir = CHATdir+"\\data-tables"
 backup_dir = CHATdir+"\\backups"
@@ -21,3 +21,6 @@ gamesfile = db_dir + "\\games.txt"
 
 tours_template_file = tours_template_dir + "\\index.html"   # <- si chiama index per conservare il nome quando viene copiato
 teams_template_file = teams_template_dir + "\\index.html"   # <- si chiama index per conservare il nome quando viene copiato
+
+adv_toursfile = db_dir+"\\adv-tours.txt"
+adv_teamsfile = db_dir+"\\adv-teams.txt"

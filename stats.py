@@ -2,9 +2,10 @@ from paths import *
 from messages import *
 
 from mgmt import *
+from advmgmt import *
 
 def update_tour_stats():
-    data_in()
+    adv_data_in()
     zero_stats()
         
     for key in games_dict:

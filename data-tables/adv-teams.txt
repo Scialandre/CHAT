@@ -1,0 +1,268 @@
+
+##########
+ID: 
+NAME: 
+TOUR_ID: 
+SPORT: 
+PLAYERS: 
+STAFF: 
+RANK_SCORE: 0
+WIN: 0
+DRAW: 0
+LOSE: 0
+SCORE_OUT: 0
+SCORE_IN: 0
+
+##########
+ID: id-team
+NAME: nome
+TOUR_ID: 
+SPORT: sport
+PLAYERS: 
+STAFF: 
+RANK_SCORE: 0
+WIN: 0
+DRAW: 0
+LOSE: 0
+SCORE_OUT: 0
+SCORE_IN: 0
+
+##########
+ID: 0
+NAME: san cassiano
+TOUR_ID: 0
+SPORT: Calcio
+PLAYERS:  1-P, Mark Evans, 10-A, Axel Blaze
+STAFF:  1-Allenatore, shirley
+RANK_SCORE: 3
+WIN: 1
+DRAW: 0
+LOSE: 1
+SCORE_OUT: 3
+SCORE_IN: 2
+
+##########
+ID: 1
+NAME: caprarica
+TOUR_ID: 0
+SPORT: Calcio
+PLAYERS:  7-C, Jude Sharp
+STAFF: 
+RANK_SCORE: 3
+WIN: 1
+DRAW: 0
+LOSE: 1
+SCORE_OUT: 2
+SCORE_IN: 3
+
+##########
+ID: 2
+NAME: Migliano
+TOUR_ID: 0
+SPORT: Calcio
+PLAYERS: 
+STAFF: 
+RANK_SCORE: 0
+WIN: 0
+DRAW: 0
+LOSE: 0
+SCORE_OUT: 0
+SCORE_IN: 0
+
+##########
+ID: 3
+NAME: waterdeep
+TOUR_ID: 0
+SPORT: Calcio
+PLAYERS: 
+STAFF: 
+RANK_SCORE: 0
+WIN: 0
+DRAW: 0
+LOSE: 0
+SCORE_OUT: 0
+SCORE_IN: 0
+
+##########
+ID: 4
+NAME: padrepio
+TOUR_ID: 1
+SPORT: sei prop
+PLAYERS: 
+STAFF: 
+RANK_SCORE: 0
+WIN: 0
+DRAW: 0
+LOSE: 0
+SCORE_OUT: 0
+SCORE_IN: 0
+
+##########
+ID: 5
+NAME: santender
+TOUR_ID: 11
+SPORT: ao
+PLAYERS: 
+STAFF: 
+RANK_SCORE: 0
+WIN: 0
+DRAW: 0
+LOSE: 0
+SCORE_OUT: 0
+SCORE_IN: 0
+
+##########
+ID: 6
+NAME: caligola
+TOUR_ID: 11
+SPORT: ao
+PLAYERS: 
+STAFF: 
+RANK_SCORE: 0
+WIN: 0
+DRAW: 0
+LOSE: 0
+SCORE_OUT: 0
+SCORE_IN: 0
+
+##########
+ID: 7
+NAME: piopero
+TOUR_ID: 1
+SPORT: sei prop
+PLAYERS: 
+STAFF: 
+RANK_SCORE: 0
+WIN: 0
+DRAW: 0
+LOSE: 0
+SCORE_OUT: 0
+SCORE_IN: 0
+
+##########
+ID: 8
+NAME: sandaloe
+TOUR_ID: 1
+SPORT: sei prop
+PLAYERS: 
+STAFF: 
+RANK_SCORE: 0
+WIN: 0
+DRAW: 0
+LOSE: 0
+SCORE_OUT: 0
+SCORE_IN: 0
+
+##########
+ID: 9
+NAME: ciao
+TOUR_ID: 1
+SPORT: sei prop
+PLAYERS: 
+STAFF: 
+RANK_SCORE: 0
+WIN: 0
+DRAW: 0
+LOSE: 0
+SCORE_OUT: 0
+SCORE_IN: 0
+
+##########
+ID: 10
+NAME: san
+TOUR_ID: 8
+SPORT: calo99
+PLAYERS: 
+STAFF: 
+RANK_SCORE: 0
+WIN: 0
+DRAW: 0
+LOSE: 0
+SCORE_OUT: 0
+SCORE_IN: 0
+
+##########
+ID: 11
+NAME: ciao
+TOUR_ID: 8
+SPORT: calo99
+PLAYERS: 
+STAFF: 
+RANK_SCORE: 0
+WIN: 0
+DRAW: 0
+LOSE: 0
+SCORE_OUT: 0
+SCORE_IN: 0
+
+##########
+ID: 12
+NAME: popopo
+TOUR_ID: 0
+SPORT: Calcio
+PLAYERS: 
+STAFF: 
+RANK_SCORE: 0
+WIN: 0
+DRAW: 0
+LOSE: 0
+SCORE_OUT: 0
+SCORE_IN: 0
+
+##########
+ID: 13
+NAME: cacaccaca
+TOUR_ID: 0
+SPORT: Calcio
+PLAYERS: 
+STAFF: 
+RANK_SCORE: 0
+WIN: 0
+DRAW: 0
+LOSE: 0
+SCORE_OUT: 0
+SCORE_IN: 0
+
+##########
+ID: 14
+NAME: franceso
+TOUR_ID: 11
+SPORT: ao
+PLAYERS: 
+STAFF: 
+RANK_SCORE: 0
+WIN: 0
+DRAW: 0
+LOSE: 0
+SCORE_OUT: 0
+SCORE_IN: 0
+
+##########
+ID: 15
+NAME: vircolino
+TOUR_ID: 11
+SPORT: ao
+PLAYERS: 
+STAFF: 
+RANK_SCORE: 0
+WIN: 0
+DRAW: 0
+LOSE: 0
+SCORE_OUT: 0
+SCORE_IN: 0
+
+##########
+ID: 16
+NAME: pinotto
+TOUR_ID: 8
+SPORT: calo99
+PLAYERS: 
+STAFF: 
+RANK_SCORE: 0
+WIN: 0
+DRAW: 0
+LOSE: 0
+SCORE_OUT: 0
+SCORE_IN: 0
+
+##########

@@ -1,4 +1,3 @@
-;;;
 0;Esempio;active;Calcio
 1;caso amico;active;sei prop
 2;SandaLOE;archived;luigi

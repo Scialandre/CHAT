@@ -1,0 +1,4 @@
+id_squadra;id_staff;nome;role
+0;0;calogero;allenatore
+0;1;franco;staff_role2
+1;0;antonio;allenatore
