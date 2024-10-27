@@ -5,6 +5,7 @@ from paths import *
 
 from updater import *
 from mgmt import *
+from advmgmt import *
 from backupFun import *
 
 

@@ -7,7 +7,7 @@ from htmlLineTemplates import *
 from messages import *
 
 from mgmt import *
-from stats import *
+from advmgmt import *
 
 
 def update_pages():
